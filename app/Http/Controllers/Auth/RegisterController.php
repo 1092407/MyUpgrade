@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use App\Mail\RegistrationMail;
+
 class RegisterController extends Controller
 {
     /*
@@ -24,11 +26,14 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
+
+     //qui se faccio override decido io dove finisce se la registrazione ha successo
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -62,12 +67,24 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+     //voglio che se si registra e la validazione ha successo gli arrivi una email
+     //quindi dopo che account è creato metto il codice per fargli mandare la mail
+
     protected function create(array $data)
     {
-        return User::create([
+        $user= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        //se scrivo solo Mail segnala un errore e non funziona
+        \Mail::to($user)->send(new RegistrationMail($user));
+
+        return $user;
     }
-}
+
+
+
+
+}//chiude la classe

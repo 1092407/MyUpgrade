@@ -26,6 +26,11 @@ class LoginController extends Controller
      *
      * @var string
      */
+
+     //qui posso fare override della funzione redirect : in questo modo se ho un sistema con livelli di utenti
+     //una volta che fanno il login li rimando direttamente alla loro area riservata : concetti di AUTORIZZAZIONE ED AUTORIZZAZIONE
+
+
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**

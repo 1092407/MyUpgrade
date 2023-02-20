@@ -15,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/prova', function () {
     return view('prova');
 });
+
+Route::post('/home/InserisciAuto',[App\Http\Controllers\HomeController::class, 'provarequest'])->name('checkreq');
 
 //Route::view('/prova','prova')->name('prova');
 
