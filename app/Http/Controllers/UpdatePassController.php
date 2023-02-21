@@ -24,7 +24,7 @@ class UpdatePassController extends Controller
       $this->validate($request,[
       'old_password' => ['required', 'string', 'min:8'],
       'password' => ['required', 'string', 'min:8', 'confirmed'],
-     'password_confirmation' => ['required', 'string', 'min:8'],
+     'password_confirmation' => ['required', 'string', 'min:8'],   //lasciare chiamato così perchè sennò crea problemi  visto su stack overflow
       ]);
 
       $current_user=auth()->user(); //utente attualmente loggato da cui prendo la pass per vedere se combacia con quella vecchia
