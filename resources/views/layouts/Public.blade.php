@@ -46,6 +46,9 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                  @csrf
                  </form>
+
+                 <a class="nav-link active" aria-current="page" href="{{ route('ShowChangePassForm') }}">Change Pass</a>
+
                  @endauth
 
                 <!-- qui per pagine statiche come chi siamo dove siamo ecc o se ne voglio altre  -->

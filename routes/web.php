@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('prova');
 })->name('welcome');
 
+
+/*
 Route::get('/prova', function () {
     return view('prova');
 });
-
+*/
 Route::post('/home/InserisciAuto',[App\Http\Controllers\HomeController::class, 'provarequest'])->name('checkreq');
 
 //Route::view('/prova','prova')->name('prova');
@@ -28,3 +30,5 @@ Route::post('/home/InserisciAuto',[App\Http\Controllers\HomeController::class, '
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/UpdatePass', [App\Http\Controllers\UpdatePassController::class, 'ShowChangePassForm'])->name('ShowChangePassForm')->middleware('auth');
+Route::post('/UpdatePass', [App\Http\Controllers\UpdatePassController::class, 'ChangePass'])->name('ChangePass')->middleware('auth');
